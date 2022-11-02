@@ -1,0 +1,114 @@
+<html>
+	
+<head>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<style>
+		
+		.content {
+		  max-height: 0; /*target property*/
+		  overflow: hidden;
+		  transition: max-height 0.3s ease-out;
+		}
+		
+	</style>
+	
+</head>
+	
+<body>
+	
+	<button id="myBtn1">JS Mode</button>
+	<button id="myBtn2">jQuery Mode</button>
+	<button class="collapsible-button">Collapse Menu</button>
+	
+	<div class="content">
+	  <p>Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful. Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.</p>
+	</div>
+	
+<script>
+	
+	
+	*/
+	
+	// DOM Elements
+	const contentDOM = document.querySelector(".content");
+	const butonOneDOM = document.getElementById("myBtn1");
+	const buttonTwoDOM = document.getElementById("myBtn2");
+	const buttonCollapsible = document.querySelector(".collapsible-button");
+	
+	// Global Flag
+	let flag = null;
+	
+	// Javascript Callback
+	const collapseElementWithJavascipt = () => {
+	  console.log("collapse with Javascipt");
+	
+	  if (contentDOM.style.maxHeight == "158px") {
+		contentDOM.style.maxHeight = "0px";
+	  } else {
+		contentDOM.style.maxHeight = "158px";
+	  }
+	};
+	
+	// jQuery Callback
+	const collapseElementWithJQuery = () => {
+	  console.log("collapse with JQuery");
+	
+	  if (contentDOM.style.maxHeight == "158px") {
+		$(".content").css({ "max-height": "0px" });
+	  } else {
+		$(".content").css({ "max-height": "158px" });
+	  }
+	};
+	
+	// Mode Event listeners
+	// dispatch (() => { console.log ("Hello !") });
+	butonOneDOM.addEventListener("click", (event) => (flag = "javascript")); // Set flag
+	buttonTwoDOM.addEventListener("click", (event) => (flag = "jquery")); // Set flag
+	
+	// Collapse Event listener
+	// Conditional (Ternary) Operator: condition ? value if true : value if false
+	buttonCollapsible.addEventListener("click", () => {
+	  if (!flag) return console.log("Select mode"); // exit if flag is null
+	  return flag === "jquery" // ternary - return function based on flag
+		? collapseElementWithJQuery()
+		: collapseElementWithJavascipt();
+	}); 
+
+/* 
+METHOD 1: Defining function as a variable and passing it.
+var fn = () => { console.log( "Hello !"); }
+// Invoke the dispatch () function
+dispatch(fn);  // Outputs "Hello !"
+
+METHOD 2:  Defining an normal anonymous function inline.
+dispatch (function () {
+  console.log("Hello !");
+});
+
+METHOD 3:  Defining an arrow function inline
+dispatch (() => { console.log ("Hello !") });
+*/
+	
+	/* example of callback function
+	function greeting(name) {
+	  alert(`Hello, ${name}`);
+	}
+	
+	function processUserInput(callback) {
+	  const name = prompt("Please enter your name.");
+	  callback(name);
+	}
+	
+	processUserInput(greeting);*/
+	
+	
+</script>	
+
+
+
+	
+</body>	
+
+</html>
