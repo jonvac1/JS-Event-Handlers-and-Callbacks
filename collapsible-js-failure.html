@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<style>
+		.content,
+		.content1 {
+			max-height: 0;  /* this is the property that we are targeting to set = scrollHeight when 0 */
+			overflow: hidden;
+			transition: max-height 0.3s ease-out;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<button id="jsBtn" onclick="myBtn1">JS Mode</button>
+	<button id="jqueryBtn" onclick="myBtn2">jQuery Mode</button>
+	<button class="collapsible">Collapse Me</button>
+
+	<div class="content">
+		<p>Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful. Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.
+		Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful. Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.Nietzsche here is saying that truth often results in a consensus and is something that is set by the powerful.</p>
+	</div>
+
+	<script>
+		 
+	
+	/* High-level:
+	onclick event via "JS Mode" button --> once inside trigger addEventListener upon "Collapse Me" being triggered
+	onclick event via "jQuery Mode" button --> once inside run jQuery code upon "Collapse Me" being triggered */
+
+		document.getElementById("jsBtn").onclick = jsBtn;
+		function jsBtn(){
+
+		var coll = document.getElementsByClassName("collapsible");
+		coll[0].addEventListener("click", myFunction);
+
+		function myFunction() {
+
+			var content = this.nextElementSibling;
+			console.log("proof that JS does not exit");
+			if (content.style.maxHeight) {
+				content.style.maxHeight = null;
+			} else {
+				content.style.maxHeight = content.scrollHeight + "px";
+			}
+
+		};
+
+	}
+
+	document.getElementById("jqueryBtn").onclick = jqueryBtn;
+	function jqueryBtn(){
+		
+		console.log("inside for a little bit")
+		$(document).ready(function() {
+			$(".content").css({
+				"max-height": "158px"
+			});
+			$(".content").hide();
+			$(".collapsible").click(function() {
+				$(".content").slideToggle(".2s");
+			});
+		});
+	}
+	
+	</script>
+
+</body>
+
+
+</html>
